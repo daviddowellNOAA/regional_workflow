@@ -165,8 +165,11 @@ else
     bkpath=${cycle_dir}${slash_ensmem_subdir}/fcst_fv3lam${cycle_tag}/INPUT
 fi
 
-# Copy analysis fields into uncertainties
-cp_vrfy ${bkpath}/fv_tracer.res.tile1.nc  ${bkpath}/fv_tracer.unc.tile1.nc
+if [ ${i_uncertainty} == ".true." ]; then
+  # Copy analysis fields into uncertainties - data will be overwritten
+  echo "EXREGIONAL_NONVARCLDANL.SH: copy tracer file into uncertainty file "
+  cp_vrfy ${bkpath}/fv_tracer.res.tile1.nc  ${bkpath}/fv_tracer.unc.tile1.nc
+fi
 
 n_iolayouty=$(($IO_LAYOUT_Y-1))
 list_iolayout=$(seq 0 $n_iolayouty)
