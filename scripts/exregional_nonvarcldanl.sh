@@ -165,7 +165,7 @@ else
     bkpath=${cycle_dir}${slash_ensmem_subdir}/fcst_fv3lam${cycle_tag}/INPUT
 fi
 
-if [ ${l_uncertainty} == ".true." ]; then
+if [ ${l_cld_uncertainty} == ".true." ]; then
   # Copy analysis fields into uncertainties - data will be overwritten
   echo "EXREGIONAL_NONVARCLDANL.SH: copy tracer file into uncertainty file "
   cp_vrfy ${bkpath}/fv_tracer.res.tile1.nc  ${bkpath}/fv_tracer.unc.tile1.nc
@@ -320,7 +320,7 @@ cat << EOF > gsiparm.anl
    i_T_Q_adjust=${i_T_Q_adjust},
    l_rtma3d=${l_rtma3d},
    i_precip_vertical_check=${i_precip_vertical_check},
-   l_uncertainty=${l_uncertainty},
+   l_cld_uncertainty=${l_cld_uncertainty},
  /
 EOF
 
